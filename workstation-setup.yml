@@ -23,6 +23,11 @@
                     deb: https://go.microsoft.com/fwlink/?LinkID=760868
             become: yes
 
+          - name : Install Discord
+            apt:
+                    deb: https://discordapp.com/api/download?platform=linux&format=deb
+            become: yes
+
           - name: Remove useless packages from the cache
             apt:
                     autoclean: yes
