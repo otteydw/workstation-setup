@@ -1,0 +1,15 @@
+*.pyc
+*.retry
+*.un~
+*.swp
+*.swo
+
+# Galaxy roles
+roles/galaxy*
+
+# Local config
+_*.yml
+test.sh
+.venv
+.vscode
+
