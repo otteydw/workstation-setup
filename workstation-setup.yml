@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+
+  tasks:
+          - name : Install packages
+            apt:
+                    name: "{{ packages }}"
+            vars:
+                    packages:
+                            - shutter
+                            - terminator
+            become: yes
