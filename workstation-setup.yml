@@ -2,6 +2,13 @@
 - hosts: localhost
 
   tasks:
+ 
+          - name: Only run "update_cache=yes" if the last one is more than 3600 seconds ago
+            apt:
+                    update_cache: yes
+                    cache_valid_time: 3600
+            become: yes
+
           - name : Install packages
             apt:
                     name: "{{ packages }}"
@@ -9,8 +16,19 @@
                     packages:
                             - shutter
                             - terminator
+            become: yes
 
           - name : Install Visual Studio Code
             apt:
                     deb: https://go.microsoft.com/fwlink/?LinkID=760868
+            become: yes
+
+          - name: Remove useless packages from the cache
+            apt:
+                    autoclean: yes
+            become: yes
+
+          - name: Remove dependencies that are no longer required
+            apt:
+                    autoremove: yes
             become: yes
