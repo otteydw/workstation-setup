@@ -9,4 +9,8 @@
                     packages:
                             - shutter
                             - terminator
+
+          - name : Install Visual Studio Code
+            apt:
+                    deb: https://go.microsoft.com/fwlink/?LinkID=760868
             become: yes
