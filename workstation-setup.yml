@@ -104,3 +104,11 @@
         group: root
         state: link
       become: yes
+
+    - lineinfile:
+        path: ~/.config/terminator/config 
+        regexp: '.*size =.*'
+        insertafter: '.*type = Window'
+        line: '      size = 2000, 1000'
+        create: no
+        
