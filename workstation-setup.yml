@@ -9,12 +9,19 @@
                     cache_valid_time: 3600
             become: yes
 
+          - name: Install Graphics Drivers PPA repo
+            apt_repository:
+                  repo: ppa:graphics-drivers/ppa
+                  state: present
+            become: yes
+
           - name : Install packages
             apt:
                     name: "{{ packages }}"
             vars:
                     packages:
                             - gnome-tweaks
+                            - nvidia-390
                             - shutter
                             - terminator
             become: yes
@@ -42,12 +49,6 @@
                     deb: https://discordapp.com/api/download?platform=linux&format=deb
             become: yes
             when: is_discord is failed
-
-          - name: Install Graphics Drivers PPA repo
-            apt_repository:
-                  repo: ppa:graphics-drivers/ppa
-                  state: present
-            become: yes
 
           - name: Remove useless packages from the cache
             apt:
