@@ -80,4 +80,27 @@
         autoremove: yes
       become: yes
 
-      # dpkg-query -W slack-desktop
+    # Set of symlinks required for VMWare Horizon Client
+    - file:
+        src: /usr/lib/x86_64-linux-gnu/libgstreamer-1.0.so.0
+        dest: /usr/lib/x86_64-linux-gnu/libgstreamer-0.10.so.0
+        owner: root
+        group: root
+        state: link
+      become: yes
+
+    - file:
+        src: /usr/lib/x86_64-linux-gnu/libgstapp-1.0.so.0
+        dest: /usr/lib/x86_64-linux-gnu/libgstapp-0.10.so.0
+        owner: root
+        group: root
+        state: link
+      become: yes
+
+    - file:
+        src: /usr/lib/x86_64-linux-gnu/libgstbase-1.0.so.0
+        dest: /usr/lib/x86_64-linux-gnu/libgstbase-0.10.so.0
+        owner: root
+        group: root
+        state: link
+      become: yes
