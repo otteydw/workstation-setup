@@ -21,10 +21,17 @@
         name: "{{ packages }}"
       vars:
         packages:
+          - cpanminus
           - gnome-tweaks
+          - libappindicator-dev   # http://tipsonubuntu.com/2018/05/25/re-enable-shutter-app-icon-ubuntu-18-04-system-tray/
           # - nvidia-driver-396
           - shutter
           - terminator
+      become: yes
+
+    - name: Install Gtk2::AppIndicator
+      cpanm:
+        name: Gtk2::AppIndicator  # http://tipsonubuntu.com/2018/05/25/re-enable-shutter-app-icon-ubuntu-18-04-system-tray/
       become: yes
 
     - name: Check if Visual Studio Code is installed
