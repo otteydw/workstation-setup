@@ -3,62 +3,62 @@
 
   tasks:
 
-          - name: Only run "update_cache=yes" if the last one is more than 3600 seconds ago
-            apt:
-                    update_cache: yes
-                    cache_valid_time: 3600
-            become: yes
+    - name: Only run "update_cache=yes" if the last one is more than 3600 seconds ago
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+      become: yes
 
-          # # https://www.linuxbabe.com/ubuntu/install-nvidia-driver-ubuntu-18-04
-          # - name: Install Graphics Drivers PPA repo
-          #   apt_repository:
-          #         repo: ppa:graphics-drivers/ppa
-          #         state: present
-          #   become: yes
+    # # https://www.linuxbabe.com/ubuntu/install-nvidia-driver-ubuntu-18-04
+    # - name: Install Graphics Drivers PPA repo
+    #   apt_repository:
+    #       repo: ppa:graphics-drivers/ppa
+    #       state: present
+    #   become: yes
 
-          - name : Install packages
-            apt:
-                    name: "{{ packages }}"
-            vars:
-                    packages:
-                            - gnome-tweaks
-                            # - nvidia-driver-396
-                            - shutter
-                            - terminator
-            become: yes
+    - name : Install packages
+      apt:
+        name: "{{ packages }}"
+      vars:
+        packages:
+          - gnome-tweaks
+          # - nvidia-driver-396
+          - shutter
+          - terminator
+      become: yes
 
-          - name: Check if Visual Studio Code is installed
-            shell: dpkg-query -W 'code'
-            ignore_errors: True
-            changed_when: false
-            register: is_code
+    - name: Check if Visual Studio Code is installed
+      shell: dpkg-query -W 'code'
+      ignore_errors: True
+      changed_when: false
+      register: is_code
 
-          - name : Install Visual Studio Code
-            apt:
-                    deb: https://go.microsoft.com/fwlink/?LinkID=760868
-            become: yes
-            when: is_code is failed
+    - name : Install Visual Studio Code
+      apt:
+        deb: https://go.microsoft.com/fwlink/?LinkID=760868
+      become: yes
+      when: is_code is failed
 
-          - name: Check if Discord is installed
-            shell: dpkg-query -W 'discord'
-            ignore_errors: True
-            changed_when: false
-            register: is_discord 
+    - name: Check if Discord is installed
+      shell: dpkg-query -W 'discord'
+      ignore_errors: True
+      changed_when: false
+      register: is_discord 
 
-          - name : Install Discord
-            apt:
-                    deb: https://discordapp.com/api/download?platform=linux&format=deb
-            become: yes
-            when: is_discord is failed
+    - name : Install Discord
+      apt:
+        deb: https://discordapp.com/api/download?platform=linux&format=deb
+      become: yes
+      when: is_discord is failed
 
-          - name: Remove useless packages from the cache
-            apt:
-                    autoclean: yes
-            become: yes
+    - name: Remove useless packages from the cache
+      apt:
+        autoclean: yes
+      become: yes
 
-          - name: Remove dependencies that are no longer required
-            apt:
-                    autoremove: yes
-            become: yes
+    - name: Remove dependencies that are no longer required
+      apt:
+        autoremove: yes
+      become: yes
 
-            # dpkg-query -W slack-desktop
+      # dpkg-query -W slack-desktop
