@@ -2,7 +2,7 @@
 - hosts: localhost
 
   tasks:
- 
+
           - name: Only run "update_cache=yes" if the last one is more than 3600 seconds ago
             apt:
                     update_cache: yes
@@ -14,18 +14,39 @@
                     name: "{{ packages }}"
             vars:
                     packages:
+                            - gnome-tweaks
                             - shutter
                             - terminator
             become: yes
+
+          - name: Check if Visual Studio Code is installed
+            shell: dpkg-query -W 'code'
+            ignore_errors: True
+            changed_when: false
+            register: is_code
 
           - name : Install Visual Studio Code
             apt:
                     deb: https://go.microsoft.com/fwlink/?LinkID=760868
             become: yes
+            when: is_code is failed
+
+          - name: Check if Discord is installed
+            shell: dpkg-query -W 'discord'
+            ignore_errors: True
+            changed_when: false
+            register: is_discord 
 
           - name : Install Discord
             apt:
                     deb: https://discordapp.com/api/download?platform=linux&format=deb
+            become: yes
+            when: is_discord is failed
+
+          - name: Install Graphics Drivers PPA repo
+            apt_repository:
+                  repo: ppa:graphics-drivers/ppa
+                  state: present
             become: yes
 
           - name: Remove useless packages from the cache
@@ -37,3 +58,5 @@
             apt:
                     autoremove: yes
             become: yes
+
+            # dpkg-query -W slack-desktop
