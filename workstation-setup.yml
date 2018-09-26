@@ -22,6 +22,7 @@
       vars:
         packages:
           - cpanminus
+          - curl
           - gnome-tweaks
           - libappindicator-dev   # http://tipsonubuntu.com/2018/05/25/re-enable-shutter-app-icon-ubuntu-18-04-system-tray/
           # - nvidia-driver-396
