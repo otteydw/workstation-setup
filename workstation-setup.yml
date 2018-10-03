@@ -28,6 +28,7 @@
           - libappindicator-dev   # http://tipsonubuntu.com/2018/05/25/re-enable-shutter-app-icon-ubuntu-18-04-system-tray/
           - nmap
           # - nvidia-driver-396
+          - python-pip
           - shutter
           - terminator
       become: yes
@@ -127,3 +128,10 @@
         line: '      size = 2000, 1000'
         create: no
         
+    - name: Install pip packages
+      pip:
+        name: "{{ packages }}"
+      vars:
+        packages:
+          - mdv # View Markdown Files in Terminal
+      become: yes
