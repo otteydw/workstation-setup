@@ -27,6 +27,7 @@
           - htop
           - jq
           - libappindicator-dev   # http://tipsonubuntu.com/2018/05/25/re-enable-shutter-app-icon-ubuntu-18-04-system-tray/
+          - mysql-client
           - nmap
           # - nvidia-driver-396
           - openvpn-systemd-resolved
