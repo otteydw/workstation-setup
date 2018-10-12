@@ -28,10 +28,12 @@
           - jq
           - libappindicator-dev   # http://tipsonubuntu.com/2018/05/25/re-enable-shutter-app-icon-ubuntu-18-04-system-tray/
           - mysql-client
+          - net-tools
           - nmap
           # - nvidia-driver-396
           - openvpn-systemd-resolved
           - python-pip
+          - python3-pip
           - shutter
           - terminator
       become: yes
@@ -148,5 +150,6 @@
         name: "{{ packages }}"
       vars:
         packages:
+          - boardgamegeek2 # purely for my own enjoyment
           - mdv # View Markdown Files in Terminal
       become: yes
