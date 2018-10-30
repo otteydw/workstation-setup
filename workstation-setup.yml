@@ -3,6 +3,21 @@
 
   tasks:
 
+    # - name: Install VirtualBox Keys from Oracle
+    #   apt_key:
+    #     url: "{{ item }}"
+    #     state: present
+    #   with_items:
+    #     - https://www.virtualbox.org/download/oracle_vbox_2016.asc
+    #     - https://www.virtualbox.org/download/oracle_vbox.asc
+    #   become: yes
+
+    # - name: Add VirtualBox repo
+    #   apt_repository:
+    #     repo: deb https://download.virtualbox.org/virtualbox/debian bionic partner
+    #     state: present
+    #   become: yes
+
     - name: Only run "update_cache=yes" if the last one is more than 3600 seconds ago
       apt:
         update_cache: yes
@@ -36,6 +51,7 @@
           - python3-pip
           - shutter
           - terminator
+          # - virtualbox-5.2
       become: yes
 
     - name: Install Gtk2::AppIndicator
@@ -153,3 +169,11 @@
           - boardgamegeek2 # purely for my own enjoyment
           - mdv # View Markdown Files in Terminal
       become: yes
+
+    - name: Add an Apt signing key, uses whichever key is at the URL
+      apt_key:
+        url: "{{ item }}"
+        state: present
+      with_items:
+        - https://www.virtualbox.org/download/oracle_vbox_2016.asc
+        - https://www.virtualbox.org/download/oracle_vbox.asc
