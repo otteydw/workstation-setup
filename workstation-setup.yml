@@ -171,10 +171,10 @@
           - mdv # View Markdown Files in Terminal
       become: yes
 
-    - name: Add an Apt signing key, uses whichever key is at the URL
-      apt_key:
-        url: "{{ item }}"
-        state: present
-      with_items:
-        - https://www.virtualbox.org/download/oracle_vbox_2016.asc
-        - https://www.virtualbox.org/download/oracle_vbox.asc
+    # - name: Add an Apt signing key, uses whichever key is at the URL
+    #   apt_key:
+    #     url: "{{ item }}"
+    #     state: present
+    #   with_items:
+    #     - https://www.virtualbox.org/download/oracle_vbox_2016.asc
+    #     - https://www.virtualbox.org/download/oracle_vbox.asc
