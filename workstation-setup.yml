@@ -47,6 +47,7 @@
           - nmap
           # - nvidia-driver-396
           - openvpn-systemd-resolved
+          - pwgen
           - python-pip
           - python3-pip
           - shutter
