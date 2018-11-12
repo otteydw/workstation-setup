@@ -52,6 +52,7 @@
           - python3-pip
           - shutter
           - terminator
+          - transmission
           # - virtualbox-5.2
       become: yes
 
