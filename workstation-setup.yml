@@ -38,6 +38,7 @@
         packages:
           - cpanminus
           - curl
+          - gimp
           - gnome-tweaks
           - htop
           - jq
