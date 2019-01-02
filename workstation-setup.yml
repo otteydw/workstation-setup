@@ -180,3 +180,15 @@
     #   with_items:
     #     - https://www.virtualbox.org/download/oracle_vbox_2016.asc
     #     - https://www.virtualbox.org/download/oracle_vbox.asc
+
+    # Set fs.inotify.max_user_watches required for larger VS code workspaces
+    # Default: 8192
+    # https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc
+    - name: Set fs.inotify.max_user_watches
+      sysctl:
+        name: fs.inotify.max_user_watches
+        value: 524288
+        sysctl_set: yes
+        state: present
+        reload: yes
+      become: yes
