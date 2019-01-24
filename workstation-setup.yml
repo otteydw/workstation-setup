@@ -38,6 +38,7 @@
         packages:
           - cpanminus
           - curl
+          - flameshot
           - gimp
           - gnome-tweaks
           - htop
@@ -51,12 +52,12 @@
           - pwgen
           - python-pip
           - python3-pip
-          - shutter
           - terminator
           - transmission
           # - virtualbox-5.2
       become: yes
 
+    # Replaced shutter with flameshot, so this may no longer be necessary.  But I don't know....
     - name: Install Gtk2::AppIndicator
       cpanm:
         name: Gtk2::AppIndicator  # http://tipsonubuntu.com/2018/05/25/re-enable-shutter-app-icon-ubuntu-18-04-system-tray/
