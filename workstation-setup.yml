@@ -52,6 +52,7 @@
           - pwgen
           - python-pip
           - python3-pip
+          - speedtest-cli
           - terminator
           - transmission
           # - virtualbox-5.2
