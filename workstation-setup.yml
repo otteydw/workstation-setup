@@ -56,6 +56,7 @@
           - terminator
           - transmission
           # - virtualbox-5.2
+          - whois
       become: yes
 
     # Replaced shutter with flameshot, so this may no longer be necessary.  But I don't know....
