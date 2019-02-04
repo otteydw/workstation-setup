@@ -36,8 +36,10 @@
         name: "{{ packages }}"
       vars:
         packages:
+          - boxes
           - cpanminus
           - curl
+          - figlet
           - flameshot
           - gimp
           - gnome-tweaks
