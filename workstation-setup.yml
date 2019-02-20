@@ -144,31 +144,21 @@
       become: yes
 
     # Set of symlinks required for VMWare Horizon Client
-    - file:
-        src: /usr/lib/x86_64-linux-gnu/libgstreamer-1.0.so.0
-        dest: /usr/lib/x86_64-linux-gnu/libgstreamer-0.10.so.0
+    - name: Symlinks required for VMWare Hortizon Client
+      file:
+        src: "/usr/lib/x86_64-linux-gnu/{{ item }}-1.0.so.0"
+        dest: "/usr/lib/x86_64-linux-gnu/{{ item }}-0.10.so.0"
         owner: root
         group: root
         state: link
+      with_items:
+        - libgstreamer
+        - libgstapp
+        - libgstbase
       become: yes
 
-    - file:
-        src: /usr/lib/x86_64-linux-gnu/libgstapp-1.0.so.0
-        dest: /usr/lib/x86_64-linux-gnu/libgstapp-0.10.so.0
-        owner: root
-        group: root
-        state: link
-      become: yes
-
-    - file:
-        src: /usr/lib/x86_64-linux-gnu/libgstbase-1.0.so.0
-        dest: /usr/lib/x86_64-linux-gnu/libgstbase-0.10.so.0
-        owner: root
-        group: root
-        state: link
-      become: yes
-
-    - lineinfile:
+    - name: Add setting to Terminator config
+      lineinfile:
         path: ~/.config/terminator/config
         regexp: '.*size =.*'
         insertafter: '.*type = Window'
@@ -206,17 +196,17 @@
 
     - name: Add Docker Apt signing key
       apt_key:
-        url: "https://download.docker.com/linux/ubuntu/gpg"
+        url: "https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg"
         state: present
       become: yes
 
     - name: Add Docker repo
       apt_repository:
-        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu stable {{ ansible_distribution_release }}"
+        repo: "deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable"
         state: present
       become: yes
 
-    - name : Install Docker packages
+    - name : Install Docker CE packages
       apt:
         name: "{{ packages }}"
       vars:
