@@ -18,7 +18,7 @@
     #     state: present
     #   become: yes
 
-    - name: Only run "update_cache=yes" if the last one is more than 1 hour ago
+    - name: Update the apt cache if the last one is more than 1 hour ago
       apt:
         update_cache: yes
         cache_valid_time: 3600
@@ -208,11 +208,13 @@
       apt_key:
         url: "https://download.docker.com/linux/ubuntu/gpg"
         state: present
+      become: yes
 
     - name: Add Docker repo
       apt_repository:
         repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu stable {{ ansible_distribution_release }}"
         state: present
+      become: yes
 
     - name : Install Docker packages
       apt:
@@ -222,3 +224,4 @@
           - docker-ce
           - docker-ce-cli
           - containerd.io
+      become: yes
