@@ -18,7 +18,7 @@
     #     state: present
     #   become: yes
 
-    - name: Update the apt cache if the last one is more than 1 hour ago
+    - name: Update the apt cache if the last update was more than 1 hour ago
       apt:
         update_cache: yes
         cache_valid_time: 3600
