@@ -39,6 +39,7 @@
           - boxes
           - cpanminus
           - curl
+          - docker
           - figlet
           - flameshot
           - gimp
@@ -95,7 +96,7 @@
       shell: dpkg-query -W 'discord'
       ignore_errors: True
       changed_when: false
-      register: is_discord 
+      register: is_discord
 
     - name : Install Discord
       apt:
@@ -163,12 +164,12 @@
       become: yes
 
     - lineinfile:
-        path: ~/.config/terminator/config 
+        path: ~/.config/terminator/config
         regexp: '.*size =.*'
         insertafter: '.*type = Window'
         line: '      size = 2000, 1000'
         create: no
-        
+
     - name: Install pip packages
       pip:
         name: "{{ packages }}"
