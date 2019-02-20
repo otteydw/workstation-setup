@@ -39,7 +39,6 @@
           - boxes
           - cpanminus
           - curl
-          - docker
           - figlet
           - flameshot
           - gimp
@@ -60,6 +59,12 @@
           - transmission
           # - virtualbox-5.2
           - whois
+          # The following packages added for Docker CE (https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+          - apt-transport-https
+          - ca-certificates
+          - gnupg-agent
+          - software-properties-common
+          # End Docker CE Package List
       become: yes
 
     # Replaced shutter with flameshot, so this may no longer be necessary.  But I don't know....
@@ -198,3 +203,22 @@
         state: present
         reload: yes
       become: yes
+
+    - name: Add Docker Apt signing key
+      apt_key:
+        url: "https://download.docker.com/linux/ubuntu/gpg"
+        state: present
+
+    - name: Add Docker repo
+      apt_repository:
+        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu stable {{ ansible_distribution_release }}"
+        state: present
+
+    - name : Install Docker packages
+      apt:
+        name: "{{ packages }}"
+      vars:
+        packages:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
