@@ -33,9 +33,7 @@
 
     - name : Install packages
       apt:
-        name: "{{ packages }}"
-      vars:
-        packages:
+        name:
           - boxes
           - cpanminus
           - curl
@@ -208,9 +206,7 @@
 
     # - name : Install Docker CE packages
     #   apt:
-    #     name: "{{ packages }}"
-    #   vars:
-    #     packages:
+    #     name:
     #       - docker-ce
     #       - docker-ce-cli
     #       - containerd.io
