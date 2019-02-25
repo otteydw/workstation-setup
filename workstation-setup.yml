@@ -64,6 +64,11 @@
           - gnupg-agent
           - software-properties-common
           # End Docker CE Package List
+          # https://boomi.slack.com/archives/G0UUG0PFS/p1550855956035300
+          # sudo apt-get install --install-recommends linux-generic-hwe-18.04 xserver-xorg-hwe-18.04
+          - linux-generic-hwe-18.04
+          - xserver-xorg-hwe-18.04
+          # End
       become: yes
 
     # Replaced shutter with flameshot, so this may no longer be necessary.  But I don't know....
