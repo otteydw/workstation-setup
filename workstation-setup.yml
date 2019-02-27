@@ -38,6 +38,7 @@
           - clamav
           - cpanminus
           - curl
+          - dirmngr # AZ cli
           - figlet
           - flameshot
           - gimp
@@ -45,6 +46,7 @@
           - htop
           - jq
           - libappindicator-dev   # http://tipsonubuntu.com/2018/05/25/re-enable-shutter-app-icon-ubuntu-18-04-system-tray/
+          - lsb-release # AZ cli
           - mutt
           - mysql-client
           - net-tools
@@ -60,10 +62,10 @@
           # - virtualbox-5.2
           - whois
           # The following packages added for Docker CE (https://docs.docker.com/install/linux/docker-ce/ubuntu/)
-          - apt-transport-https
+          - apt-transport-https  # Also for az cli
           - ca-certificates
           - gnupg-agent
-          - software-properties-common
+          - software-properties-common  # Also for az cli
           # End Docker CE Package List
           # https://boomi.slack.com/archives/G0UUG0PFS/p1550855956035300
           # sudo apt-get install --install-recommends linux-generic-hwe-18.04 xserver-xorg-hwe-18.04
@@ -218,3 +220,23 @@
     #       - docker-ce-cli
     #       - containerd.io
     #   become: yes
+
+    - name: Add Microsoft Signing Key
+      apt_key:
+        keyserver: packages.microsoft.com
+        id: BC528686B50D79E339D3721CEB3E94ADBE1229CF
+        keyring: /etc/apt/trusted.gpg.d/Microsoft.gpg
+        state: present
+      become: yes
+
+    - name: Add Azure cli repo
+      apt_repository:
+        repo: "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ {{ ansible_distribution_release }} main"
+        state: present
+      become: yes
+
+    - name : Install azure cli
+      apt:
+        name:
+          - azure-cli
+      become: yes
