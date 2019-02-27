@@ -35,6 +35,7 @@
       apt:
         name:
           - boxes
+          - clamav
           - cpanminus
           - curl
           - figlet
