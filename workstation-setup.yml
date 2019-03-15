@@ -240,3 +240,11 @@
         name:
           - azure-cli
       become: yes
+
+    # https://github.com/magicmonty/bash-git-prompt
+    - name: Get git bash prompt
+      git:
+        repo: 'https://github.com/magicmonty/bash-git-prompt.git'
+        dest: ~/.bash-git-prompt
+        depth: 1
+        update: no
