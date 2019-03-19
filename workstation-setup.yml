@@ -59,6 +59,7 @@
           - speedtest-cli
           - terminator
           - transmission
+          - vlc
           # - virtualbox-5.2
           - whois
           # The following packages added for Docker CE (https://docs.docker.com/install/linux/docker-ce/ubuntu/)
