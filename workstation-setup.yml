@@ -180,6 +180,7 @@
         packages:
           - boardgamegeek2 # purely for my own enjoyment
           - mdv # View Markdown Files in Terminal
+          - youtube_dl
       become: yes
 
     # - name: Add an Apt signing key, uses whichever key is at the URL
