@@ -1,0 +1,7 @@
+---
+# ansible-galaxy install -r roles/requirements.yml -p ./roles/ --force -vvv
+
+- src: git@bitbucket.org:boomii/ansible-role-jmxutil.git
+  scm: git
+  version: master
+  name: galaxy-ansible-role-jmxutil

@@ -1,6 +1,11 @@
 ---
 - hosts: localhost
 
+  roles:
+    - role: galaxy-ansible-role-jmxutil
+      boomi_user_name: dottey
+      boomi_group_name: dottey
+
   tasks:
 
     # - name: Install VirtualBox Keys from Oracle
