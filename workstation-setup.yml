@@ -60,12 +60,14 @@
           - nmap
           # - nvidia-driver-396
           - openvpn-systemd-resolved
+          - p7zip
           - pwgen
           - python-pip
           - python3-pip
           - speedtest-cli
           - terminator
           - transmission
+          - unrar
           - vlc
           # - virtualbox-5.2
           - whois
