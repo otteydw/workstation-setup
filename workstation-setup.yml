@@ -64,6 +64,8 @@
           - pwgen
           - python-pip
           - python3-pip
+          - python3-tk  # tkinter
+          - python3-venv
           - speedtest-cli
           - terminator
           - transmission
@@ -81,7 +83,7 @@
           # sudo apt-get install --install-recommends linux-generic-hwe-18.04 xserver-xorg-hwe-18.04
           - linux-generic-hwe-18.04
           - xserver-xorg-hwe-18.04
-          # End
+
       become: yes
 
     # Replaced shutter with flameshot, so this may no longer be necessary.  But I don't know....
