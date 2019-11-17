@@ -23,6 +23,18 @@
     #     state: present
     #   become: yes
 
+    - name: Install Spotify Key
+      apt_key:
+        url: "https://download.spotify.com/debian/pubkey.gpg"
+        state: present
+      become: yes
+
+    - name: Add Spotify repo
+      apt_repository:
+        repo: "deb http://repository.spotify.com stable non-free"
+        state: present
+      become: yes
+
     - name: Update the apt cache if the last update was more than 1 hour ago
       apt:
         update_cache: yes
@@ -67,6 +79,7 @@
           - python3-tk  # tkinter
           - python3-venv
           - speedtest-cli
+          - spotify-client
           - terminator
           - transmission
           - unrar
