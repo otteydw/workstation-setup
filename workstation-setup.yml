@@ -35,6 +35,13 @@
         state: present
       become: yes
 
+    # https://yktoo.com/en/software/sound-switcher-indicator/
+    - name: Add Sound Switcher Repository
+      apt_repository:
+        repo: "ppa:yktooo/ppa"
+        state: present
+      become: yes
+
     - name: Update the apt cache if the last update was more than 1 hour ago
       apt:
         update_cache: yes
@@ -62,6 +69,7 @@
           - gimp
           - gnome-tweaks
           - htop
+          - indicator-sound-switcher  # https://yktoo.com/en/software/sound-switcher-indicator/
           - ipcalc
           - jq
           - libappindicator-dev   # http://tipsonubuntu.com/2018/05/25/re-enable-shutter-app-icon-ubuntu-18-04-system-tray/
