@@ -119,10 +119,17 @@
         name: Gtk2::AppIndicator  # http://tipsonubuntu.com/2018/05/25/re-enable-shutter-app-icon-ubuntu-18-04-system-tray/
       become: yes
 
-    - name : Install Latest Zoom
+    - name: Check if Zoom is installed
+      shell: dpkg-query -W 'zoom'
+      ignore_errors: True
+      changed_when: false
+      register: is_zoom
+
+    - name : Install Dell Zoom
       apt:
         deb: https://dell.zoom.us/client/latest/zoom_amd64.deb
       become: yes
+      when: is_zoom is failed
 
     - name: Check if Visual Studio Code is installed
       shell: dpkg-query -W 'code'
