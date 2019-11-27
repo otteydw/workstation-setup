@@ -100,6 +100,7 @@
           - vlc
           # - virtualbox-5.2
           - whois
+          - wireshark
           # The following packages added for Docker CE (https://docs.docker.com/install/linux/docker-ce/ubuntu/)
           - apt-transport-https  # Also for az cli
           - ca-certificates
