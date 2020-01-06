@@ -48,6 +48,13 @@
         state: present
       become: yes
 
+    # https://itsfoss.com/best-linux-screen-recorders/
+    - name: Add OBS-Studio Repository
+      apt_repository:
+        repo: "ppa:obsproject/obs-studio"
+        state: present
+      become: yes
+
     - name: Update the apt cache if the last update was more than 1 hour ago
       apt:
         update_cache: yes
@@ -85,6 +92,7 @@
           - net-tools
           - nmap
           # - nvidia-driver-396
+          - obs-studio
           - openvpn-systemd-resolved
           - p7zip
           - pwgen
