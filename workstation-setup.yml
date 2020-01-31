@@ -316,3 +316,9 @@
         dest: ~/.bash-git-prompt
         depth: 1
         update: no
+
+    - name: Flameshot Print Screen Hotkey Replacement
+      copy:
+        src: "flameshot-hotkey.sh"
+        dest: "~/opt/bin/flameshot-hotkey.sh"
+        mode: 0700
