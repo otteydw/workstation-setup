@@ -235,7 +235,7 @@
 
     # gtk.css from http://blog.nabam.net/workstation/2017/09/15/terminator_tabs/
     - name: GTK CSS (Used for terminator)
-      file:
+      copy:
         src: "gtk.css"
         dest: "~/.config/gtk-3.0/gtk.css"
 
