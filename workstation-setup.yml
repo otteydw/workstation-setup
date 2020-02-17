@@ -6,6 +6,10 @@
       boomi_user_name: dottey
       boomi_group_name: dottey
 
+    - role: geerlingguy.nodejs
+      nodejs_version: "13.x"
+      become: true
+
   tasks:
 
     # - name: Install VirtualBox Keys from Oracle

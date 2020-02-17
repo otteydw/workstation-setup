@@ -5,3 +5,7 @@
   scm: git
   version: master
   name: galaxy-ansible-role-jmxutil
+
+- src: https://github.com/geerlingguy/ansible-role-nodejs.git
+  version: master
+  name: geerlingguy.nodejs
