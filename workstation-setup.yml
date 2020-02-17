@@ -326,3 +326,9 @@
         src: "flameshot-hotkey.sh"
         dest: "~/opt/bin/flameshot-hotkey.sh"
         mode: 0700
+
+    - name: Install elasticdump
+      npm:
+        name: elasticdump
+        global: true
+      become: true
