@@ -332,3 +332,8 @@
         name: elasticdump
         global: true
       become: true
+
+- hosts: localhost
+
+  roles:
+    - role: vagrant

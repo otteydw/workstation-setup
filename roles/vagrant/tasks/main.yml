@@ -1,0 +1,5 @@
+- name: Install HashiCorp Key
+  apt_key:
+    data: "{{ lookup('file', 'hashicorp.gpg') }}"
+    id: 51852D87348FFC4C
+  become: yes
