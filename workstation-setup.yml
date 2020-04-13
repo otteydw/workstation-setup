@@ -1,15 +1,6 @@
 ---
 - hosts: localhost
 
-  roles:
-    - role: galaxy-ansible-role-jmxutil
-      boomi_user_name: dottey
-      boomi_group_name: dottey
-
-    - role: galaxy-geerlingguy.nodejs
-      nodejs_version: "13.x"
-      become: true
-
   tasks:
 
     - name: Install Zoom Key (Dell)
@@ -303,14 +294,23 @@
         dest: "~/opt/bin/flameshot-hotkey.sh"
         mode: 0700
 
-    - name: Install elasticdump
-      npm:
-        name: elasticdump
-        global: true
-      become: true
-
 - hosts: localhost
 
   roles:
     - role: vagrant
     - role: virtualbox
+
+    - role: galaxy-ansible-role-jmxutil
+      boomi_user_name: dottey
+      boomi_group_name: dottey
+
+    - role: galaxy-geerlingguy.nodejs
+      nodejs_version: "13.x"
+      become: true
+
+  tasks:
+    - name: Install elasticdump
+      npm:
+        name: elasticdump
+        global: true
+      become: true
