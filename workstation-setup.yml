@@ -6,7 +6,7 @@
       boomi_user_name: dottey
       boomi_group_name: dottey
 
-    - role: geerlingguy.nodejs
+    - role: galaxy-geerlingguy.nodejs
       nodejs_version: "13.x"
       become: true
 
