@@ -1,0 +1,22 @@
+- name: Install VirtualBox 2016 Key from Oracle
+  apt_key:
+    url: "https://www.virtualbox.org/download/oracle_vbox_2016.asc"
+    state: present
+  become: yes
+
+- name: Install VirtualBox Key from Oracle
+  apt_key:
+    url: "https://www.virtualbox.org/download/oracle_vbox.asc"
+    state: present
+  become: yes
+
+- name: Add VirtualBox repo
+  apt_repository:
+    repo: deb https://download.virtualbox.org/virtualbox/debian bionic contrib
+    state: present
+  become: yes
+
+- name : Install VirtualBox
+  apt:
+    name: virtualbox-6.1
+  become: yes
