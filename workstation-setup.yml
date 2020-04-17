@@ -298,6 +298,15 @@
       nodejs_version: "13.x"
       become: true
 
+    - role: galaxy-geerlingguy.dotfiles
+      dotfiles_repo: git@github.com:otteydw/dotfiles.git
+      dotfiles_repo_local_destination: ~/git/dotfiles
+      dotfiles_files:
+        - .bashrc
+        - .gitconfig
+        - .screenrc
+        - .vimrc
+
   tasks:
     - name: Install elasticdump
       npm:

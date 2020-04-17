@@ -9,3 +9,6 @@
 - src: https://github.com/geerlingguy/ansible-role-nodejs.git
   version: master
   name: galaxy-geerlingguy.nodejs
+
+- src: geerlingguy.dotfiles
+  name: galaxy-geerlingguy.dotfiles
