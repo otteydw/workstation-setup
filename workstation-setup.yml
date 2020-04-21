@@ -60,6 +60,7 @@
           - ffmpeg  # youtube-dl
           # - flameshot
           - gimp
+          - git-extras
           - gnome-tweaks
           - htop
           - indicator-sound-switcher  # https://yktoo.com/en/software/sound-switcher-indicator/
