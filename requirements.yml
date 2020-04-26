@@ -12,3 +12,6 @@
 
 - src: geerlingguy.dotfiles
   name: galaxy-geerlingguy.dotfiles
+
+- src: geerlingguy.docker
+  name: galaxy-geerlingguy.docker

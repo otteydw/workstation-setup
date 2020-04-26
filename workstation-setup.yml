@@ -291,6 +291,11 @@
     - role: vagrant
     - role: virtualbox
 
+    - role: galaxy-geerlingguy.docker
+      docker_users:
+        - dottey
+      become: true
+
     - role: galaxy-ansible-role-jmxutil
       boomi_user_name: dottey
       boomi_group_name: dottey
