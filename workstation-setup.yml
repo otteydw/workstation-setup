@@ -52,7 +52,6 @@
       apt:
         name:
           - boxes
-          - clamav
           - cpanminus
           - curl
           - dirmngr # AZ cli
@@ -290,6 +289,9 @@
   roles:
     - role: vagrant
     - role: virtualbox
+
+    - role: galaxy-geerlingguy.clamav
+      become: true
 
     - role: galaxy-geerlingguy.docker
       docker_users:

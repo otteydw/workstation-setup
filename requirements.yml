@@ -10,8 +10,11 @@
   version: master
   name: galaxy-geerlingguy.nodejs
 
-- src: geerlingguy.dotfiles
-  name: galaxy-geerlingguy.dotfiles
+- src: geerlingguy.clamav
+  name: galaxy-geerlingguy.clamav
 
 - src: geerlingguy.docker
   name: galaxy-geerlingguy.docker
+
+- src: geerlingguy.dotfiles
+  name: galaxy-geerlingguy.dotfiles
