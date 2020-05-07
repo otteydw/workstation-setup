@@ -6,7 +6,7 @@
   version: master
   name: galaxy-ansible-role-jmxutil
 
-- src: https://github.com/geerlingguy/ansible-role-nodejs.git
+- src: geerlingguy.nodejs
   version: master
   name: galaxy-geerlingguy.nodejs
 
