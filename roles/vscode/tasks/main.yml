@@ -1,0 +1,11 @@
+- name: Check if Visual Studio Code is installed
+  shell: dpkg-query -W 'code'
+  ignore_errors: True
+  changed_when: false
+  register: is_code
+
+- name : Install Visual Studio Code
+  apt:
+    deb: https://go.microsoft.com/fwlink/?LinkID=760868
+  become: yes
+  when: is_code is failed

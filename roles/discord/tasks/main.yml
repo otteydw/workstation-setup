@@ -1,0 +1,11 @@
+- name: Check if Discord is installed
+  shell: dpkg-query -W 'discord'
+  ignore_errors: True
+  changed_when: false
+  register: is_discord
+
+- name : Install Discord
+  apt:
+    deb: https://discordapp.com/api/download?platform=linux&format=deb
+  become: yes
+  when: is_discord is failed

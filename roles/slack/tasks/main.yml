@@ -1,0 +1,11 @@
+- name: Check if Slack is installed
+  shell: dpkg-query -W 'slack-desktop'
+  ignore_errors: True
+  changed_when: false
+  register: is_slack
+
+- name : Install Slack
+  apt:
+    deb: https://downloads.slack-edge.com/linux_releases/slack-desktop-3.1.0-amd64.deb
+  become: yes
+  when: is_slack is failed

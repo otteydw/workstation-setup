@@ -1,0 +1,17 @@
+- name: Install Zoom Key (Dell)
+  apt_key:
+    url: "https://dell.zoom.us/linux/download/pubkey"
+    state: present
+  become: yes
+
+- name: Check if Zoom is installed
+  shell: dpkg-query -W 'zoom'
+  ignore_errors: True
+  changed_when: false
+  register: is_zoom
+
+- name : Install Dell Zoom
+  apt:
+    deb: https://dell.zoom.us/client/latest/zoom_amd64.deb
+  become: yes
+  when: is_zoom is failed

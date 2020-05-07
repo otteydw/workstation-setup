@@ -1,0 +1,12 @@
+- name: Check if Flameshot 0.6.0 is installed
+  shell: "dpkg-query -W 'flameshot' | grep '0.6.0'"
+  ignore_errors: True
+  changed_when: false
+  register: is_flameshot
+
+# The version available from Ubuntu is 0.5.1-2.  But 0.6.0 has text capabilities.
+- name : Install Flameshot 0.6.0
+  apt:
+    deb: https://github.com/lupoDharkael/flameshot/releases/download/v0.6.0/flameshot_0.6.0_bionic_x86_64.deb
+  become: yes
+  when: is_flameshot is failed

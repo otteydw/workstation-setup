@@ -1,0 +1,11 @@
+- name: Check if Dropbox is installed
+  shell: dpkg-query -W 'dropbox'
+  ignore_errors: True
+  changed_when: false
+  register: is_dropbox
+
+- name : Install Dropbox
+  apt:
+    deb: https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2015.10.28_amd64.deb
+  become: yes
+  when: is_dropbox is failed
