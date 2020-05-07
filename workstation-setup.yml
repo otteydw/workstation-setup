@@ -267,7 +267,6 @@
 - hosts: localhost
 
   roles:
-    - role: azurecli
     - role: vagrant
     - role: virtualbox
 
@@ -277,6 +276,9 @@
     - role: galaxy-geerlingguy.docker
       docker_users:
         - dottey
+      become: true
+
+    - role: galaxy-huxoll.azure-cli
       become: true
 
     - role: galaxy-ansible-role-jmxutil
