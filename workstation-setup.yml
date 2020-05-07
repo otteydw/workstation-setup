@@ -51,16 +51,18 @@
     - name : Install packages
       apt:
         name:
+          - apt-transport-https
           - boxes
+          - ca-certificates
           - cpanminus
           - curl
           - dirmngr # AZ cli
-          - figlet
           - ffmpeg  # youtube-dl
-          # - flameshot
+          - figlet
           - gimp
           - git-extras
           - gnome-tweaks
+          - gnupg-agent
           - htop
           - indicator-sound-switcher  # https://yktoo.com/en/software/sound-switcher-indicator/
           - ipcalc
@@ -71,15 +73,15 @@
           - mysql-client
           - net-tools
           - nmap
-          # - nvidia-driver-396
           - obs-studio
           - openvpn-systemd-resolved
           - p7zip
           - pwgen
-          - python-pip
           - python3-pip
           - python3-tk  # tkinter
           - python3-venv
+          - python-pip
+          - software-properties-common
           - speedtest-cli
           - spotify-client
           - terminator
@@ -88,10 +90,6 @@
           - vlc
           - whois
           - wireshark
-          - apt-transport-https
-          - ca-certificates
-          - gnupg-agent
-          - software-properties-common
           # https://boomi.slack.com/archives/G0UUG0PFS/p1550855956035300
           # sudo apt-get install --install-recommends linux-generic-hwe-18.04 xserver-xorg-hwe-18.04
           - linux-generic-hwe-18.04
