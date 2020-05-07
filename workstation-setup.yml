@@ -88,12 +88,10 @@
           - vlc
           - whois
           - wireshark
-          # The following packages added for Docker CE (https://docs.docker.com/install/linux/docker-ce/ubuntu/)
-          - apt-transport-https  # Also for az cli
+          - apt-transport-https
           - ca-certificates
           - gnupg-agent
-          - software-properties-common  # Also for az cli
-          # End Docker CE Package List
+          - software-properties-common
           # https://boomi.slack.com/archives/G0UUG0PFS/p1550855956035300
           # sudo apt-get install --install-recommends linux-generic-hwe-18.04 xserver-xorg-hwe-18.04
           - linux-generic-hwe-18.04
@@ -229,26 +227,6 @@
         state: present
         reload: yes
       become: yes
-
-    # - name: Add Docker Apt signing key
-    #   apt_key:
-    #     url: "https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg"
-    #     state: present
-    #   become: yes
-
-    # - name: Add Docker repo
-    #   apt_repository:
-    #     repo: "deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable"
-    #     state: present
-    #   become: yes
-
-    # - name : Install Docker CE packages
-    #   apt:
-    #     name:
-    #       - docker-ce
-    #       - docker-ce-cli
-    #       - containerd.io
-    #   become: yes
 
     # https://github.com/magicmonty/bash-git-prompt
     - name: Get git bash prompt
