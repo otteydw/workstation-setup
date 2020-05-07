@@ -41,13 +41,6 @@
         cache_valid_time: 3600
       become: yes
 
-    # # https://www.linuxbabe.com/ubuntu/install-nvidia-driver-ubuntu-18-04
-    # - name: Install Graphics Drivers PPA repo
-    #   apt_repository:
-    #       repo: ppa:graphics-drivers/ppa
-    #       state: present
-    #   become: yes
-
     - name : Install packages
       apt:
         name:
@@ -94,14 +87,13 @@
           # sudo apt-get install --install-recommends linux-generic-hwe-18.04 xserver-xorg-hwe-18.04
           - linux-generic-hwe-18.04
           - xserver-xorg-hwe-18.04
-
       become: yes
 
     # Replaced shutter with flameshot, so this may no longer be necessary.  But I don't know....
-    - name: Install Gtk2::AppIndicator
-      cpanm:
-        name: Gtk2::AppIndicator  # http://tipsonubuntu.com/2018/05/25/re-enable-shutter-app-icon-ubuntu-18-04-system-tray/
-      become: yes
+    # - name: Install Gtk2::AppIndicator
+    #   cpanm:
+    #     name: Gtk2::AppIndicator  # http://tipsonubuntu.com/2018/05/25/re-enable-shutter-app-icon-ubuntu-18-04-system-tray/
+    #   become: yes
 
     - name: Check if Zoom is installed
       shell: dpkg-query -W 'zoom'
