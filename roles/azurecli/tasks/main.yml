@@ -1,0 +1,20 @@
+
+- name: Add Microsoft Signing Key
+  apt_key:
+    keyserver: packages.microsoft.com
+    id: BC528686B50D79E339D3721CEB3E94ADBE1229CF
+    keyring: /etc/apt/trusted.gpg.d/Microsoft.gpg
+    state: present
+  become: yes
+
+- name: Add Azure cli repo
+  apt_repository:
+    repo: "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ {{ ansible_distribution_release }} main"
+    state: present
+  become: yes
+
+- name : Install azure cli
+  apt:
+    name:
+      - azure-cli
+  become: yes
