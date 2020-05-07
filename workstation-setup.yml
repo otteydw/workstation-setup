@@ -312,6 +312,7 @@
       dotfiles_files:
         - .bashrc
         - .gitconfig
+        - .gitignore
         - .screenrc
         - .vimrc
 
