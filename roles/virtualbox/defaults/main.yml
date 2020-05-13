@@ -1,0 +1,7 @@
+virtualbox_apt_release_channel: contrib
+virtualbox_apt_arch: amd64
+virtualbox_apt_distribution_release: "{{ ansible_distribution_release }}"
+virtualbox_apt_repository: "deb https://download.virtualbox.org/virtualbox/debian {{ virtualbox_apt_distribution_release }} {{ virtualbox_apt_release_channel }}"
+virtualbox_apt_ignore_key_error: true
+# virtualbox_apt_gpg_key: https://www.virtualbox.org/download/oracle_vbox.asc # for older distributions.
+virtualbox_apt_gpg_key: https://www.virtualbox.org/download/oracle_vbox_2016.asc  # Debian 8 ("Jessie") / Ubuntu 16.04 ("Xenial") and later

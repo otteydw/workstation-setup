@@ -29,6 +29,18 @@
         state: present
       become: yes
 
+    - name: Pre-create directories
+      file:
+        path: "{{ item }}"
+        state: directory
+        mode: '0750'
+      with_items:
+        - ~/.config/
+        - ~/.config/terminator
+        - ~/.config/gtk-3.0
+        - ~/opt/
+        - ~/opt/bin
+
     - name: Update the apt cache if the last update was more than 1 hour ago
       apt:
         update_cache: yes
@@ -38,6 +50,7 @@
     - name : Install packages
       apt:
         name:
+          - adb # Android Debugging
           - apt-transport-https
           - boxes
           - ca-certificates
@@ -67,7 +80,8 @@
           - python3-pip
           - python3-tk  # tkinter
           - python3-venv
-          - python-pip
+            #- python-pip
+          - scrcpy  # display and control of Android devices
           - software-properties-common
           - speedtest-cli
           - spotify-client
@@ -81,13 +95,10 @@
           # sudo apt-get install --install-recommends linux-generic-hwe-18.04 xserver-xorg-hwe-18.04
           - linux-generic-hwe-18.04
           - xserver-xorg-hwe-18.04
+          # tesseract OCR
+          - tesseract-ocr
+          - libtesseract-dev
       become: yes
-
-    # Replaced shutter with flameshot, so this may no longer be necessary.  But I don't know....
-    # - name: Install Gtk2::AppIndicator
-    #   cpanm:
-    #     name: Gtk2::AppIndicator  # http://tipsonubuntu.com/2018/05/25/re-enable-shutter-app-icon-ubuntu-18-04-system-tray/
-    #   become: yes
 
     # Set of symlinks required for VMWare Horizon Client
     - name: Symlinks required for VMWare Hortizon Client
@@ -153,28 +164,52 @@
         dest: "~/opt/bin/flameshot-hotkey.sh"
         mode: 0700
 
+    - name: Install Slack
+      snap:
+        name: slack
+        classic: yes
+      become: yes
+
+    - name: Create a python2 virtualenv
+      pip:
+        name: pip
+        virtualenv: ~/opt/p2env
+        virtualenv_python: python2
+
+    - name: Allow user to run openvpn via sudo without password
+      template:
+        src: openvpn-sudoers.j2
+        dest: /etc/sudoers.d/10-openvpn
+        validate: "visudo -cf %s"
+        mode: 0440
+      become: yes
+
 - hosts: localhost
 
   roles:
     - role: dellzoom
     - role: discord
-    - role: dropbox
+      #    - role: dropbox
     - role: flameshot
-    - role: slack
     - role: vagrant
+
     - role: virtualbox
+      virtualbox_apt_distribution_release: eoan # Force Ubuntu 19.10's VirtualBox repo even on Ubuntu 20.04 (because "focal" is not yet available)
+
     - role: vscode
 
     - role: galaxy-geerlingguy.clamav
       become: true
 
-    - role: galaxy-geerlingguy.docker
-      docker_users:
-        - dottey
-      become: true
+    # - role: galaxy-geerlingguy.docker
+    # - role: galaxy-ottey.docker
+    #   docker_apt_distribution_release: bionic # Force Ubuntu 19.10's Docker repo even on Ubuntu 20.04 (because "focal" is not yet available)
+    #   docker_users:
+    #     - dottey
+    #   become: true
 
-    - role: galaxy-huxoll.azure-cli
-      become: true
+    # - role: galaxy-huxoll.azure-cli
+    #   become: true
 
     - role: galaxy-ansible-role-jmxutil
       boomi_user_name: dottey

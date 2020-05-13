@@ -7,6 +7,6 @@ ansible-playbook --ask-become-pass workstation-setup.yml
 ```
 
 In gnome-tweaks:
-* Power: Suspend when laptop lid is closed (OFF)
+* General: Power: Suspend when laptop lid is closed (OFF)
 * Top Bar: Battery Percentage (ON)
-* Clock: Date (ON)
+* Top Bar: Clock: Date (ON)

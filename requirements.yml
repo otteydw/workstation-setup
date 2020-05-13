@@ -13,8 +13,14 @@
 - src: geerlingguy.clamav
   name: galaxy-geerlingguy.clamav
 
-- src: geerlingguy.docker
-  name: galaxy-geerlingguy.docker
+# - src: geerlingguy.docker
+#   name: galaxy-geerlingguy.docker
+
+# - src: git@github.com:otteydw/ansible-role-docker.git
+#   scm: git
+#   version: allow_override_ansible_distribution_release
+#   name: galaxy-ottey.docker
+
 
 - src: geerlingguy.dotfiles
   name: galaxy-geerlingguy.dotfiles
