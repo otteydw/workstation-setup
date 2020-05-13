@@ -5,7 +5,7 @@
   become: yes
 
 - name: Check if Zoom is installed
-  shell: dpkg-query -W 'zoom'
+  shell: "dpkg-query -W 'zoom' | grep {{ zoom_version }}"
   ignore_errors: True
   changed_when: false
   register: is_zoom
