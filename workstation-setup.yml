@@ -29,6 +29,12 @@
         state: present
       become: yes
 
+    - name: Add Lutris Repository
+      apt_repository:
+        repo: "ppa:lutris-team/lutris"
+        state: present
+      become: yes
+
     - name: Pre-create directories
       file:
         path: "{{ item }}"
@@ -47,11 +53,13 @@
         cache_valid_time: 3600
       become: yes
 
-    - name : Install packages
+    - name : Install deb packages
       apt:
         name:
           - adb # Android Debugging
           - apt-transport-https
+          - awscli
+          - black # python code formatter
           - boxes
           - ca-certificates
           - cpanminus
@@ -68,6 +76,7 @@
           - ipcalc
           - jq
           - libappindicator-dev   # http://tipsonubuntu.com/2018/05/25/re-enable-shutter-app-icon-ubuntu-18-04-system-tray/
+          - lutris
           - lsb-release # AZ cli
           - mutt
           - mysql-client
@@ -82,6 +91,7 @@
           - python3-venv
             #- python-pip
           - scrcpy  # display and control of Android devices
+          - screen
           - software-properties-common
           - speedtest-cli
           - spotify-client
@@ -98,6 +108,13 @@
           # tesseract OCR
           - tesseract-ocr
           - libtesseract-dev
+      become: yes
+
+    - name: Install snap packages
+      snap:
+        name:
+          - gitkraken
+          - postman
       become: yes
 
     # Set of symlinks required for VMWare Horizon Client
