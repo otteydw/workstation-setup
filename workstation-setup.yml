@@ -57,6 +57,7 @@
       apt:
         name:
           - adb # Android Debugging
+          - alpine
           - apt-transport-https
           - awscli
           - black # python code formatter
@@ -65,6 +66,7 @@
           - cpanminus
           - curl
           - dirmngr # AZ cli
+          - filezilla
           - ffmpeg  # youtube-dl
           - figlet
           - gimp
@@ -76,6 +78,7 @@
           - ipcalc
           - jq
           - libappindicator-dev   # http://tipsonubuntu.com/2018/05/25/re-enable-shutter-app-icon-ubuntu-18-04-system-tray/
+          - lsb
           - lutris
           - lsb-release # AZ cli
           - mutt
