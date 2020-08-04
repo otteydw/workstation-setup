@@ -209,6 +209,7 @@
   roles:
     - role: dellzoom
     - role: discord
+    - role: docker
       #    - role: dropbox
     - role: flameshot
     - role: vagrant
