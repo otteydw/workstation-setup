@@ -84,7 +84,9 @@
           - lsb-release # AZ cli
           - mutt
           - mysql-client
+          - ncdu
           - net-tools
+          - neofetch
           - nmap
           - obs-studio
           - openvpn-systemd-resolved
