@@ -134,6 +134,9 @@
 
       become: yes
 
+    # Install https://cdn.mysql.com//Downloads/MySQLGUITools/mysql-workbench-community_8.0.23-1ubuntu20.04_amd64.deb
+    # ????
+
     - name: Install snap packages
       snap:
         name:
