@@ -27,3 +27,8 @@
 
 - src: huxoll.azure-cli
   name: galaxy-huxoll.azure-cli
+
+- src: git@bitbucket.org:boomii/ansible-role-agent-newrelic-infrastructure.git
+  scm: git
+  # version: main
+  name: galaxy-ansible-role-agent-newrelic-infrastructure

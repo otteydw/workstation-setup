@@ -275,6 +275,15 @@
         - .screenrc
         - .vimrc
 
+    - role: galaxy-ansible-role-agent-newrelic-infrastructure
+      become: yes
+      setup_newrelic_agent_repo: True
+      nrinfragent_config:
+        license_key: "{{ newrelic_ingest_license }}"
+        log_file: /var/log/nr-infra.log
+        log_to_stdout: false
+        enable_process_metrics: True
+
   tasks:
     - name: Install elasticdump
       npm:
