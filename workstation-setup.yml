@@ -3,17 +3,17 @@
 
   tasks:
 
-    - name: Install Spotify Key
-      apt_key:
-        url: "https://download.spotify.com/debian/pubkey.gpg"
-        state: present
-      become: yes
+    # - name: Install Spotify Key
+    #   apt_key:
+    #     url: "https://download.spotify.com/debian/pubkey.gpg"
+    #     state: present
+    #   become: yes
 
-    - name: Add Spotify repo
-      apt_repository:
-        repo: "deb http://repository.spotify.com stable non-free"
-        state: present
-      become: yes
+    # - name: Add Spotify repo
+    #   apt_repository:
+    #     repo: "deb http://repository.spotify.com stable non-free"
+    #     state: present
+    #   become: yes
 
     # https://yktoo.com/en/software/sound-switcher-indicator/
     - name: Add Sound Switcher Repository
