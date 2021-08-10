@@ -283,6 +283,7 @@
         log_file: /var/log/nr-infra.log
         log_to_stdout: false
         enable_process_metrics: True
+      when: newrelic_ingest_license is defined
 
   tasks:
     - name: Install elasticdump
