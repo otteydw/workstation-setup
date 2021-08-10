@@ -254,8 +254,8 @@
     #     - dottey
     #   become: true
 
-    # - role: galaxy-huxoll.azure-cli
-    #   become: true
+    - role: galaxy-huxoll.azure-cli
+      become: true
 
     - role: galaxy-ansible-role-jmxutil
       boomi_user_name: dottey
