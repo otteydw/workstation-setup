@@ -1,1 +1,5 @@
 {{ ansible_user }} ALL=(ALL) NOPASSWD: /usr/sbin/openvpn
+{{ ansible_user }} ALL=(ALL) NOPASSWD: {{ ansible_env.HOME }}/.local/bin/boomi vpn up
+{{ ansible_user }} ALL=(ALL) NOPASSWD: {{ ansible_env.HOME }}/.local/bin/boomi vpn down
+{{ ansible_user }} ALL=(ALL) NOPASSWD: {{ ansible_env.HOME }}/.local/bin/boomi vpn status
+{{ ansible_user }} ALL=(ALL) NOPASSWD: {{ ansible_env.HOME }}/.local/bin/boomi vpn bounce
