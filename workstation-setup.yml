@@ -292,6 +292,12 @@
         global: true
       become: true
 
+    - name: Install eslint (JavaScript Linter)
+      npm:
+        name: eslint
+        global: true
+      become: true
+
     - name: Remove useless packages from the cache
       apt:
         autoclean: yes
