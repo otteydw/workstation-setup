@@ -4,6 +4,7 @@ How to run:
 ```
 Install the dev-cli thing
 pip3 install ansible
+pip install virtualenv==20.0.23
 ./runme
 ```
 
