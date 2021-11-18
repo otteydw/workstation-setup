@@ -2,8 +2,9 @@
 How to run:
 
 ```
-sudo apt-get install ansible
-ansible-playbook --ask-become-pass workstation-setup.yml
+Install the dev-cli thing
+pip3 install ansible
+./runme
 ```
 
 In gnome-tweaks:

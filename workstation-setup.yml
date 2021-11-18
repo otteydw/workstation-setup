@@ -16,11 +16,11 @@
     #   become: yes
 
     # https://yktoo.com/en/software/sound-switcher-indicator/
-    - name: Add Sound Switcher Repository
-      apt_repository:
-        repo: "ppa:yktooo/ppa"
-        state: present
-      become: yes
+    #    - name: Add Sound Switcher Repository
+    #  apt_repository:
+    #    repo: "ppa:yktooo/ppa"
+    #    state: present
+    #  become: yes
 
     # https://itsfoss.com/best-linux-screen-recorders/
     - name: Add OBS-Studio Repository
@@ -29,11 +29,11 @@
         state: present
       become: yes
 
-    - name: Add Lutris Repository
-      apt_repository:
-        repo: "ppa:lutris-team/lutris"
-        state: present
-      become: yes
+    # - name: Add Lutris Repository
+    #   apt_repository:
+    #     repo: "ppa:lutris-team/lutris"
+    #     state: present
+    #   become: yes
 
     - name: Pre-create directories
       file:
@@ -75,12 +75,12 @@
           - gnome-tweaks
           - gnupg-agent
           - htop
-          - indicator-sound-switcher  # https://yktoo.com/en/software/sound-switcher-indicator/
+            #- indicator-sound-switcher  # https://yktoo.com/en/software/sound-switcher-indicator/
           - ipcalc
           - jq
           - libappindicator-dev   # http://tipsonubuntu.com/2018/05/25/re-enable-shutter-app-icon-ubuntu-18-04-system-tray/
           - lsb
-          - lutris
+            #- lutris
           - lsb-release # AZ cli
           - mutt
           - mysql-client
@@ -208,6 +208,9 @@
         dest: "~/opt/bin/flameshot-hotkey.sh"
         mode: 0700
 
+    - name: Run Flameshot Print Screen Hotkey Replacement
+      command: ~/opt/bin/flameshot-hotkey.sh
+
     - name: Install Slack
       snap:
         name: slack
@@ -220,13 +223,13 @@
         virtualenv: ~/opt/p2env
         virtualenv_python: python2
 
-    - name: Allow user to run openvpn via sudo without password
-      template:
-        src: openvpn-sudoers.j2
-        dest: /etc/sudoers.d/10-openvpn
-        validate: "visudo -cf %s"
-        mode: 0440
-      become: yes
+    # - name: Allow user to run openvpn via sudo without password
+    #   template:
+    #     src: openvpn-sudoers.j2
+    #     dest: /etc/sudoers.d/10-openvpn
+    #     validate: "visudo -cf %s"
+    #     mode: 0440
+    #   become: yes
 
 - hosts: localhost
 
@@ -239,8 +242,8 @@
     - role: pyenv
     - role: vagrant
 
-    - role: virtualbox
-      virtualbox_apt_distribution_release: eoan # Force Ubuntu 19.10's VirtualBox repo even on Ubuntu 20.04 (because "focal" is not yet available)
+    # - role: virtualbox
+    #   virtualbox_apt_distribution_release: eoan # Force Ubuntu 19.10's VirtualBox repo even on Ubuntu 20.04 (because "focal" is not yet available)
 
     - role: vscode
 
