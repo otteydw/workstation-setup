@@ -12,3 +12,6 @@ In gnome-tweaks:
 * General: Power: Suspend when laptop lid is closed (OFF)
 * Top Bar: Battery Percentage (ON)
 * Top Bar: Clock: Date (ON)
+
+In Ubuntu Settings:
+* Date & Time: Time Format: (AM / PM)
